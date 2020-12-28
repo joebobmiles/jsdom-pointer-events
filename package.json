@@ -15,6 +15,7 @@
   "keywords": [
     "pointer",
     "events",
+    "event",
     "polyfill",
     "jsdom"
   ],
