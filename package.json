@@ -1,6 +1,7 @@
 {
   "name": "@joebobmiles/pointer-events-polyfill",
   "version": "0.0.0",
+  "private": false,
   "description": "A pointer event polyfill for JSDOM.",
   "main": "src/index.ts",
   "scripts": {
