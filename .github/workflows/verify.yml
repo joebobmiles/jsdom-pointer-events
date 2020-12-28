@@ -55,22 +55,17 @@ jobs:
           - 12
           - 14
 
-        architecture:
-          - x86
-          - x64
-
     runs-on: ${{ matrix.os }}
 
-    name: Test on ${{ matrix.os }} (${{ matrix.architecture }}) (Node v${{ matrix.node_version }})
+    name: Test on ${{ matrix.os }} (node v${{ matrix.node_version }})
     steps:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
 
-      - uses: actions/node-setup@v2
+      - uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node_version }}
-          architecture: ${{ matrix.architecture }}
 
       - run: npm ci
 
