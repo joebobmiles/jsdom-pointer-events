@@ -1,0 +1,31 @@
+{
+  "name": "@joebobmiles/pointer-events-polyfill",
+  "version": "0.0.0",
+  "description": "A pointer event polyfill for JSDOM.",
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joebobmiles/pointer-events-polyfill.git"
+  },
+  "keywords": [
+    "pointer",
+    "events",
+    "polyfill",
+    "jsdom"
+  ],
+  "author": "Joseph R Miles",
+  "license": "Unlicense",
+  "bugs": {
+    "url": "https://github.com/joebobmiles/pointer-events-polyfill/issues"
+  },
+  "homepage": "https://github.com/joebobmiles/pointer-events-polyfill#readme",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.11.0",
+    "@typescript-eslint/parser": "^4.11.0",
+    "eslint": "^7.16.0",
+    "typescript": "^4.1.3"
+  }
+}
