@@ -15,10 +15,15 @@
   "keywords": [
     "pointer",
     "events",
+    "event",
     "polyfill",
     "jsdom"
   ],
-  "author": "Joseph R Miles",
+  "author": {
+    "name": "Joseph R Miles",
+    "email": "joe@jrm.dev",
+    "url": "https://jrm.dev"
+  },
   "license": "Unlicense",
   "bugs": {
     "url": "https://github.com/joebobmiles/pointer-events-polyfill/issues"
