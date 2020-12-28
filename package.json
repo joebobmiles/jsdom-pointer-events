@@ -4,7 +4,8 @@
   "description": "A pointer event polyfill for JSDOM.",
   "main": "src/index.ts",
   "scripts": {
-    "test": "exit 0"
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "repository": {
     "type": "git",
@@ -63,6 +64,14 @@
     "hooks": {
       "pre-commit": "eslint && npm test",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "jest": {
+    "roots": [
+      "<rootDir>/src"
+    ],
+    "transform": {
+      "^.+\\.ts$": "ts-jest"
     }
   }
 }
