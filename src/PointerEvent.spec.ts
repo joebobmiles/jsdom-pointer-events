@@ -1,4 +1,4 @@
-import { fireEvent } from "@testing-library/dom";
+import { createEvent, fireEvent } from "@testing-library/dom";
 import "@testing-library/jest-dom/extend-expect";
 
 import PointerEvent from "./PointerEvent";
@@ -18,14 +18,20 @@ describe("PointerEvent", () => {
     return event;
   };
 
-    const pointerOverCallback = jest.fn((_: PointerEvent) => null);
+  describe("When pointerover event is fired", () => {
+    it("Has type pointerover.", () => {
+      expect(createPointerEvent("pointerover").type).toBe("pointerover");
+    });
 
-    target.addEventListener("pointerover", pointerOverCallback);
-    fireEvent.pointerOver(target);
+    it("Triggers pointerover callback.", () => {
+      const target = document.createElement("div");
+      const pointerOverCallback = jest.fn();
 
-    const firstCallArgs = pointerOverCallback.mock.calls[0] ?? [];
+      target.addEventListener("pointerover", pointerOverCallback);
+      fireEvent(target, createPointerEvent("pointerover", {}, target));
 
-    expect((firstCallArgs[0] as PointerEvent).type).toBe("pointerover");
+      expect(pointerOverCallback).toBeCalledTimes(1);
+    });
   });
 
   test("When pointerenter event is fired, event has type pointerenter.", () => {
