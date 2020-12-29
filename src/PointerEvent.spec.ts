@@ -28,7 +28,7 @@ describe("PointerEvent", () => {
       const pointerOverCallback = jest.fn();
 
       target.addEventListener("pointerover", pointerOverCallback);
-      fireEvent(target, createPointerEvent("pointerover", {}, target));
+      fireEvent.pointerOver(target);
 
       expect(pointerOverCallback).toBeCalledTimes(1);
     });
