@@ -135,6 +135,7 @@ describe("PointerEvent", () => {
 
     const firstCallArgs = pointerDownCallback.mock.calls[0] ?? [];
 
-    expect((firstCallArgs[0] as PointerEvent).pointerId).toBe(-1);
+    expect((firstCallArgs[0] as PointerEvent).pointerId).toBe(0);
+  });
   });
 });
