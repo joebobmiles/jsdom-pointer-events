@@ -59,11 +59,174 @@
     ],
     "extends": [
       "eslint:recommended",
-      "plugin:@typescript-eslint/recommended",
-      "prettier",
-      "prettier/@typescript-eslint"
+      "plugin:@typescript-eslint/recommended"
     ],
     "rules": {
+      "indent": [
+        "error",
+        2,
+        {
+          "offsetTernaryExpressions": true
+        }
+      ],
+      "curly": [
+        "error",
+        "multi-or-nest"
+      ],
+      "dot-location": [
+        "error",
+        "property"
+      ],
+      "dot-notation": [
+        "error",
+        {
+          "allowKeywords": true
+        }
+      ],
+      "eqeqeq": [
+        "error",
+        "always"
+      ],
+      "no-multi-spaces": [
+        "error",
+        {
+          "ignoreEOLComments": true
+        }
+      ],
+      "keyword-spacing": [
+        "error",
+        {
+          "before": true,
+          "after": true
+        }
+      ],
+      "no-multi-str": "error",
+      "array-bracket-spacing": [
+        "error",
+        "always"
+      ],
+      "array-bracket-newline": [
+        "error",
+        "consistent"
+      ],
+      "array-element-newline": [
+        "error",
+        "consistent"
+      ],
+      "object-curly-spacing": [
+        "error",
+        "always"
+      ],
+      "object-curly-newline": [
+        "error",
+        {
+          "ObjectExpression": "always",
+          "ObjectPattern": {
+            "multiline": true,
+            "consistent": true
+          },
+          "ImportDeclaration": {
+            "consistent": true
+          },
+          "ExportDeclaration": {
+            "multiline": true,
+            "consistent": true
+          }
+        }
+      ],
+      "brace-style": [
+        "error",
+        "allman",
+        {
+          "allowSingleLine": true
+        }
+      ],
+      "operator-linebreak": [
+        "error",
+        "before"
+      ],
+      "comma-dangle": [
+        "error",
+        {
+          "arrays": "never",
+          "objects": "always",
+          "imports": "always",
+          "exports": "always",
+          "functions": "never"
+        }
+      ],
+      "camelcase": "error",
+      "comma-spacing": [
+        "error",
+        {
+          "before": false,
+          "after": true
+        }
+      ],
+      "func-style": [
+        "error",
+        "declaration",
+        {
+          "allowArrowFunctions": true
+        }
+      ],
+      "function-call-argument-newline": [
+        "error",
+        "consistent"
+      ],
+      "function-paren-newline": [
+        "error",
+        "multiline"
+      ],
+      "newline-per-chained-call": "error",
+      "multiline-comment-style": [
+        "error",
+        "starred-block"
+      ],
+      "linebreak-style": [
+        "error",
+        "unix"
+      ],
+      "max-len": [
+        "error",
+        {
+          "code": 80,
+          "tabWidth": 2,
+          "ignoreUrls": true,
+          "ignoreRegExpLiterals": true
+        }
+      ],
+      "arrow-body-style": [
+        "error",
+        "as-needed",
+        {
+          "requireReturnForObjectLiteral": false
+        }
+      ],
+      "implicit-arrow-linebreak": [
+        "error",
+        "below"
+      ],
+      "arrow-spacing": [
+        "error",
+        {
+          "before": true,
+          "after": true
+        }
+      ],
+      "arrow-parens": [
+        "error",
+        "always"
+      ],
+      "no-confusing-arrow": "warn",
+      "no-tabs": "error",
+      "semi": [
+        "error",
+        "always",
+        {
+          "omitLastInOneLineBlock": true
+        }
+      ],
       "@typescript-eslint/no-explicit-any": "off"
     }
   },
