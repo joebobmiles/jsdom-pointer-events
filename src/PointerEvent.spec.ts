@@ -126,7 +126,7 @@ describe("PointerEvent", () => {
     expect((firstCallArgs[0] as PointerEvent).pointerId).toBe(5);
   });
 
-  test("When options.pointerId is absent, defaults to pointerId = -1.", () => {
+  test("When options.pointerId is absent, defaults to pointerId = 0.", () => {
     const target = document.createElement("div");
     const pointerDownCallback = jest.fn((_: PointerEvent) => null);
 
