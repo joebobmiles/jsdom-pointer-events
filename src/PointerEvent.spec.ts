@@ -9,8 +9,7 @@ describe("PointerEvent", () =>
 {
   const createPointerEvent = (
     eventName = "pointerDown",
-    eventInit: PointerEventInit = {
-    },
+    eventInit: PointerEventInit = {},
     target?: Element
   ): PointerEvent => 
   {
