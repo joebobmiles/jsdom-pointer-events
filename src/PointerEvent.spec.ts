@@ -137,5 +137,28 @@ describe("PointerEvent", () => {
 
     expect((firstCallArgs[0] as PointerEvent).pointerId).toBe(0);
   });
+
+  test("When options.width is given, event has given width.", () => {
+    const target = document.createElement("div");
+    const pointerDownCallback = jest.fn((_: PointerEvent) => null);
+
+    target.addEventListener("pointerdown", pointerDownCallback);
+    fireEvent.pointerDown(target, { width: 5 });
+
+    const firstCallArgs = pointerDownCallback.mock.calls[0] ?? [];
+
+    expect((firstCallArgs[0] as PointerEvent).width).toBe(5);
+  });
+
+  test("When options.width is absent, defaults to width = 1.", () => {
+    const target = document.createElement("div");
+    const pointerDownCallback = jest.fn((_: PointerEvent) => null);
+
+    target.addEventListener("pointerdown", pointerDownCallback);
+    fireEvent.pointerDown(target);
+
+    const firstCallArgs = pointerDownCallback.mock.calls[0] ?? [];
+
+    expect((firstCallArgs[0] as PointerEvent).width).toBe(1);
   });
 });
