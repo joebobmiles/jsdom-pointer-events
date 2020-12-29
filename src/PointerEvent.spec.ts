@@ -161,4 +161,28 @@ describe("PointerEvent", () => {
 
     expect((firstCallArgs[0] as PointerEvent).width).toBe(1);
   });
+
+  test("When options.height is given, event has given height.", () => {
+    const target = document.createElement("div");
+    const pointerDownCallback = jest.fn((_: PointerEvent) => null);
+
+    target.addEventListener("pointerdown", pointerDownCallback);
+    fireEvent.pointerDown(target, { height: 5 });
+
+    const firstCallArgs = pointerDownCallback.mock.calls[0] ?? [];
+
+    expect((firstCallArgs[0] as PointerEvent).height).toBe(5);
+  });
+
+  test("When options.height is absent, defaults to height = 1.", () => {
+    const target = document.createElement("div");
+    const pointerDownCallback = jest.fn((_: PointerEvent) => null);
+
+    target.addEventListener("pointerdown", pointerDownCallback);
+    fireEvent.pointerDown(target);
+
+    const firstCallArgs = pointerDownCallback.mock.calls[0] ?? [];
+
+    expect((firstCallArgs[0] as PointerEvent).height).toBe(1);
+  });
 });
