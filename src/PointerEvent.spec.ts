@@ -6,8 +6,18 @@ import PointerEvent from "./PointerEvent";
 if (!global.PointerEvent) global.PointerEvent = PointerEvent as any;
 
 describe("PointerEvent", () => {
-  test("When pointerover event is fired, event has type pointerover.", () => {
-    const target = document.createElement("div");
+  const createPointerEvent = (
+    eventName = "pointerDown",
+    eventInit: PointerEventInit = {},
+    target?: Element
+  ) => {
+    target = target ?? document.createElement("div");
+
+    const event = createEvent(eventName, target, eventInit);
+
+    return event;
+  };
+
     const pointerOverCallback = jest.fn((_: PointerEvent) => null);
 
     target.addEventListener("pointerover", pointerOverCallback);
