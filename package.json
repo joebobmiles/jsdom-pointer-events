@@ -72,6 +72,14 @@
         "error",
         "multi-or-nest"
       ],
+      "quotes": [
+        "error",
+        "double",
+        {
+          "avoidEscape": true,
+          "allowTemplateLiterals": true
+        }
+      ],
       "dot-location": [
         "error",
         "property"
