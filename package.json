@@ -80,6 +80,10 @@
           "allowTemplateLiterals": true
         }
       ],
+      "jsx-quotes": [
+        "error",
+        "prefer-double"
+      ],
       "no-var": "error",
       "prefer-const": "error",
       "object-shorthand": [
@@ -111,6 +115,13 @@
         {
           "before": true,
           "after": true
+        }
+      ],
+      "key-spacing": [
+        "error",
+        {
+          "beforeColon": false,
+          "afterColon": true
         }
       ],
       "no-multi-str": "error",
@@ -246,6 +257,14 @@
         "always",
         {
           "omitLastInOneLineBlock": true
+        }
+      ],
+      "no-useless-rename": "error",
+      "prefer-destructuring": [
+        "error",
+        {
+          "array": true,
+          "object": true
         }
       ],
       "@typescript-eslint/no-explicit-any": "off"
