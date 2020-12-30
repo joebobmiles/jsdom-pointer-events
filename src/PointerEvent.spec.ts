@@ -173,7 +173,8 @@ describe("PointerEvent", () =>
   {
     it("Has type gotpointercapture.", () =>
     {
-      expect(createPointerEvent("gotpointercapture").type).toBe("gotpointercapture");
+      expect(createPointerEvent("gotpointercapture").type)
+        .toBe("gotpointercapture");
     });
 
     it("Triggers gotpointercapture callback.", () =>
@@ -192,7 +193,8 @@ describe("PointerEvent", () =>
   {
     it("Has type lostpointercapture.", () =>
     {
-      expect(createPointerEvent("lostpointercapture").type).toBe("lostpointercapture");
+      expect(createPointerEvent("lostpointercapture").type)
+        .toBe("lostpointercapture");
     });
 
     it("Triggers lostpointercapture callback.", () =>
@@ -235,9 +237,12 @@ describe("PointerEvent", () =>
   {
     it("Has given width.", () =>
     {
-      const { width, } = createEvent.pointerDown(document.createElement("div"), {
-        width: 10,
-      }) as PointerEvent;
+      const { width, } = createEvent.pointerDown(
+        document.createElement("div"),
+        {
+          width: 10,
+        }
+      ) as PointerEvent;
 
       expect(width).toBe(10);
     });
@@ -247,7 +252,8 @@ describe("PointerEvent", () =>
   {
     it("Has default width.", () =>
     {
-      const { width, } = createEvent.pointerDown(document.createElement("div")) as PointerEvent;
+      const { width, } =
+        createEvent.pointerDown(document.createElement("div")) as PointerEvent;
 
       expect(width).toBe(1);
     });
