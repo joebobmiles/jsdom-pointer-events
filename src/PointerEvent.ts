@@ -2,7 +2,8 @@
  * The PointerEvent interface as described by W3C:
  * https://www.w3.org/TR/pointerevents/#pointerevent-interface
  */
-interface IPointerEvent {
+interface IPointerEvent
+{
   pointerId: number;
 
   width: number;
@@ -21,7 +22,8 @@ interface IPointerEvent {
   isPrimary: boolean;
 }
 
-export default class PointerEvent extends MouseEvent implements IPointerEvent {
+export default class PointerEvent extends MouseEvent implements IPointerEvent
+{
   public pointerId: number;
 
   public width: number;
@@ -39,7 +41,8 @@ export default class PointerEvent extends MouseEvent implements IPointerEvent {
 
   public isPrimary: boolean;
 
-  constructor(type: string, options?: PointerEventInit) {
+  constructor(type: string, options?: PointerEventInit)
+  {
     super(type, options);
 
     this.pointerId = options?.pointerId ?? 0;
