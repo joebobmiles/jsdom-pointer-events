@@ -67,6 +67,7 @@
           "offsetTernaryExpressions": true
         }
       ],
+      "no-trailing-spaces": "error",
       "curly": [
         "error",
         "multi-or-nest"
