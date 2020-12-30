@@ -82,6 +82,10 @@
       ],
       "no-var": "error",
       "prefer-const": "error",
+      "object-shorthand": [
+        "error",
+        "never"
+      ],
       "dot-location": [
         "error",
         "property"
