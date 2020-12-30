@@ -80,6 +80,8 @@
           "allowTemplateLiterals": true
         }
       ],
+      "no-var": "error",
+      "prefer-const": "error",
       "dot-location": [
         "error",
         "property"
