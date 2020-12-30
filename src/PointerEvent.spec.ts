@@ -275,7 +275,7 @@ describe("PointerEvent", () =>
 
     target.addEventListener("pointerdown", pointerDownCallback);
     fireEvent.pointerDown(target, {
-      height: 5, 
+      height: 5,
     });
 
     const firstCallArgs = pointerDownCallback.mock.calls[0] ?? [];
