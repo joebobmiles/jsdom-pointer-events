@@ -218,7 +218,7 @@ describe("PointerEvent", () =>
     {
       const target = document.createElement("div");
       const { pointerId, } = createEvent.pointerDown(target, {
-        pointerId: 2,
+        "pointerId": 2,
       }) as PointerEvent;
 
       expect(pointerId).toBe(2);
@@ -243,7 +243,7 @@ describe("PointerEvent", () =>
       const { width, } = createEvent.pointerDown(
         document.createElement("div"),
         {
-          width: 10,
+          "width": 10,
         }
       ) as PointerEvent;
 
@@ -261,6 +261,9 @@ describe("PointerEvent", () =>
       expect(width).toBe(1);
     });
   });
+
+  /* eslint-disable no-unused-vars */
+  /* eslint-disable @typescript-eslint/no-unused-vars */
 
   test("When options.width is absent, defaults to width = 1.", () =>
   {
@@ -284,7 +287,7 @@ describe("PointerEvent", () =>
 
     target.addEventListener("pointerdown", pointerDownCallback);
     fireEvent.pointerDown(target, {
-      height: 5,
+      "height": 5,
     });
 
     const firstCallArgs = pointerDownCallback.mock.calls[0] ?? [];
@@ -305,4 +308,7 @@ describe("PointerEvent", () =>
 
     expect((firstCallArgs[0] as PointerEvent).height).toBe(1);
   });
+
+  /* eslint-enable no-unused-vars */
+  /* eslint-enable @typescript-eslint/no-unused-vars */
 });
