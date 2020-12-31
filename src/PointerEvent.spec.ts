@@ -259,53 +259,29 @@ describe("PointerEvent", () =>
     });
   });
 
-  /* eslint-disable no-unused-vars */
-  /* eslint-disable @typescript-eslint/no-unused-vars */
-
-  test("When options.width is absent, defaults to width = 1.", () =>
+  describe("When options.height is given", () =>
   {
-    const target = document.createElement("div");
-    const pointerDownCallback = jest.fn((_: PointerEvent) =>
-      null);
+    it("Has given height.", () =>
+    {
+      const { height, } = createEvent.pointerDown(
+        document.createElement("div"),
+        {
+          "height": 10,
+        }
+      ) as PointerEvent;
 
-    target.addEventListener("pointerdown", pointerDownCallback);
-    fireEvent.pointerDown(target);
-
-    const firstCallArgs = pointerDownCallback.mock.calls[0] ?? [];
-
-    expect((firstCallArgs[0] as PointerEvent).width).toBe(1);
-  });
-
-  test("When options.height is given, event has given height.", () =>
-  {
-    const target = document.createElement("div");
-    const pointerDownCallback = jest.fn((_: PointerEvent) =>
-      null);
-
-    target.addEventListener("pointerdown", pointerDownCallback);
-    fireEvent.pointerDown(target, {
-      "height": 5,
+      expect(height).toBe(10);
     });
-
-    const firstCallArgs = pointerDownCallback.mock.calls[0] ?? [];
-
-    expect((firstCallArgs[0] as PointerEvent).height).toBe(5);
   });
 
-  test("When options.height is absent, defaults to height = 1.", () =>
+  describe("When options.height is absent", () =>
   {
-    const target = document.createElement("div");
-    const pointerDownCallback = jest.fn((_: PointerEvent) =>
-      null);
+    it("Has default height.", () =>
+    {
+      const { height, } =
+        createEvent.pointerDown(document.createElement("div")) as PointerEvent;
 
-    target.addEventListener("pointerdown", pointerDownCallback);
-    fireEvent.pointerDown(target);
-
-    const firstCallArgs = pointerDownCallback.mock.calls[0] ?? [];
-
-    expect((firstCallArgs[0] as PointerEvent).height).toBe(1);
+      expect(height).toBe(1);
+    });
   });
-
-  /* eslint-enable no-unused-vars */
-  /* eslint-enable @typescript-eslint/no-unused-vars */
 });
