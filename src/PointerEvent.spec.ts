@@ -1,8 +1,11 @@
+/* eslint-env browser, jest */
+
 import { createEvent, fireEvent, } from "@testing-library/dom";
 import "@testing-library/jest-dom/extend-expect";
 
 import PointerEvent from "./PointerEvent";
 
+/* global global */
 if (!global.PointerEvent) global.PointerEvent = PointerEvent as any;
 
 describe("PointerEvent", () =>
