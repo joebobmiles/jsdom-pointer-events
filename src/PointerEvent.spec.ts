@@ -1,5 +1,4 @@
-/* eslint-env browser, jest */
-
+/* eslint-env browser */
 import { createEvent, fireEvent, } from "@testing-library/dom";
 import "@testing-library/jest-dom/extend-expect";
 

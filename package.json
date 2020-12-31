@@ -48,8 +48,12 @@
   },
   "eslintConfig": {
     "root": true,
+    "plugins": [
+      "jest"
+    ],
     "extends": [
-      "@joebobmiles/eslint-config-typescript"
+      "@joebobmiles/eslint-config-typescript",
+      "plugin:jest/recommended"
     ],
     "ignorePatterns": [
       "dist/**",
