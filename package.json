@@ -49,6 +49,13 @@
   },
   "eslintConfig": {
     "root": true,
+    "env": {
+      "browser": true,
+      "node": true
+    },
+    "globals": {
+      "global": "writable"
+    },
     "plugins": [
       "jest",
       "jest-dom"
