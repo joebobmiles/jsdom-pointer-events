@@ -40,6 +40,7 @@
     "@typescript-eslint/parser": "^4.11.0",
     "eslint": "^7.16.0",
     "eslint-plugin-jest": "^24.1.3",
+    "eslint-plugin-jest-dom": "^3.6.5",
     "husky": "^4.3.6",
     "jest": "^26.6.3",
     "semantic-release": "^17.3.0",
@@ -49,11 +50,13 @@
   "eslintConfig": {
     "root": true,
     "plugins": [
-      "jest"
+      "jest",
+      "jest-dom"
     ],
     "extends": [
       "@joebobmiles/eslint-config-typescript",
-      "plugin:jest/recommended"
+      "plugin:jest/recommended",
+      "plugin:jest-dom/recommended"
     ],
     "ignorePatterns": [
       "dist/**",
@@ -61,7 +64,9 @@
     ],
     "parserOptions": {
       "tsconfigRootDir": "./",
-      "project": [ "./tsconfig.json" ]
+      "project": [
+        "./tsconfig.json"
+      ]
     }
   },
   "commitlint": {
