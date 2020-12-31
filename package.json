@@ -32,6 +32,7 @@
   "devDependencies": {
     "@commitlint/cli": "^11.0.0",
     "@commitlint/config-conventional": "^11.0.0",
+    "@joebobmiles/eslint-config-typescript": "^1.1.0",
     "@testing-library/dom": "^7.29.0",
     "@testing-library/jest-dom": "^5.11.6",
     "@types/jest": "^26.0.19",
@@ -47,227 +48,16 @@
   },
   "eslintConfig": {
     "root": true,
+    "extends": [
+      "@joebobmiles/eslint-config-typescript"
+    ],
     "ignorePatterns": [
       "dist/**",
       "node_modules/**"
     ],
-    "parser": "@typescript-eslint/parser",
-    "plugins": [
-      "@typescript-eslint"
-    ],
-    "extends": [
-      "eslint:recommended",
-      "plugin:@typescript-eslint/recommended"
-    ],
-    "rules": {
-      "indent": [
-        "error",
-        2,
-        {
-          "offsetTernaryExpressions": true
-        }
-      ],
-      "no-trailing-spaces": "error",
-      "curly": [
-        "error",
-        "multi-or-nest"
-      ],
-      "quotes": [
-        "error",
-        "double",
-        {
-          "avoidEscape": true,
-          "allowTemplateLiterals": true
-        }
-      ],
-      "jsx-quotes": [
-        "error",
-        "prefer-double"
-      ],
-      "no-var": "error",
-      "prefer-const": "error",
-      "object-shorthand": [
-        "error",
-        "never"
-      ],
-      "dot-location": [
-        "error",
-        "property"
-      ],
-      "dot-notation": [
-        "error",
-        {
-          "allowKeywords": true
-        }
-      ],
-      "eqeqeq": [
-        "error",
-        "always"
-      ],
-      "no-multi-spaces": [
-        "error",
-        {
-          "ignoreEOLComments": true
-        }
-      ],
-      "keyword-spacing": [
-        "error",
-        {
-          "before": true,
-          "after": true
-        }
-      ],
-      "key-spacing": [
-        "error",
-        {
-          "beforeColon": false,
-          "afterColon": true
-        }
-      ],
-      "no-multi-str": "error",
-      "array-bracket-spacing": [
-        "error",
-        "always"
-      ],
-      "array-bracket-newline": [
-        "error",
-        "consistent"
-      ],
-      "array-element-newline": [
-        "error",
-        "consistent"
-      ],
-      "object-curly-spacing": [
-        "error",
-        "always"
-      ],
-      "object-curly-newline": [
-        "error",
-        {
-          "ObjectExpression": {
-            "multiline": true,
-            "consistent": true
-          },
-          "ObjectPattern": {
-            "multiline": true,
-            "consistent": true
-          },
-          "ImportDeclaration": {
-            "consistent": true
-          },
-          "ExportDeclaration": {
-            "multiline": true,
-            "consistent": true
-          }
-        }
-      ],
-      "brace-style": [
-        "error",
-        "allman",
-        {
-          "allowSingleLine": true
-        }
-      ],
-      "operator-linebreak": [
-        "error",
-        "before",
-        {
-          "overrides": {
-            "=": "after"
-          }
-        }
-      ],
-      "comma-dangle": [
-        "error",
-        {
-          "arrays": "never",
-          "objects": "always",
-          "imports": "always",
-          "exports": "always",
-          "functions": "never"
-        }
-      ],
-      "camelcase": "error",
-      "comma-spacing": [
-        "error",
-        {
-          "before": false,
-          "after": true
-        }
-      ],
-      "func-style": [
-        "error",
-        "declaration",
-        {
-          "allowArrowFunctions": true
-        }
-      ],
-      "function-call-argument-newline": [
-        "error",
-        "consistent"
-      ],
-      "function-paren-newline": [
-        "error",
-        "multiline"
-      ],
-      "newline-per-chained-call": "error",
-      "multiline-comment-style": [
-        "error",
-        "starred-block"
-      ],
-      "linebreak-style": [
-        "error",
-        "unix"
-      ],
-      "max-len": [
-        "warn",
-        {
-          "code": 80,
-          "tabWidth": 2,
-          "ignoreUrls": true,
-          "ignoreRegExpLiterals": true
-        }
-      ],
-      "arrow-body-style": [
-        "error",
-        "as-needed",
-        {
-          "requireReturnForObjectLiteral": false
-        }
-      ],
-      "implicit-arrow-linebreak": [
-        "error",
-        "below"
-      ],
-      "arrow-spacing": [
-        "error",
-        {
-          "before": true,
-          "after": true
-        }
-      ],
-      "arrow-parens": [
-        "error",
-        "always"
-      ],
-      "no-confusing-arrow": "warn",
-      "no-tabs": "error",
-      "semi": [
-        "error",
-        "always",
-        {
-          "omitLastInOneLineBlock": true
-        }
-      ],
-      "no-useless-rename": "error",
-      "prefer-destructuring": [
-        "error",
-        {
-          "array": true,
-          "object": true
-        }
-      ],
-      "@typescript-eslint/no-explicit-any": "off"
+    "parserOptions": {
+      "tsconfigRootDir": "./",
+      "project": [ "./tsconfig.json" ]
     }
   },
   "commitlint": {
