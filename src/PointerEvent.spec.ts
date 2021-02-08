@@ -17,195 +17,36 @@ describe("PointerEvent", () =>
     return createEvent(eventName, target, eventInit) as PointerEvent;
   };
 
-  describe("When pointerover event is fired", () =>
+  describe.each([
+    [ "pointerover" ],
+    [ "pointerenter" ],
+    [ "pointerleave " ],
+    [ "pointerdown" ],
+    [ "pointerup" ],
+    [ "pointermove" ],
+    [ "pointercancel" ],
+    [ "pointerout" ],
+    [ "gotpointercapture" ],
+    [ "lostpointercapture" ]
+  ])("When event is fired", (eventName) =>
   {
-    it("Has type pointerover.", () =>
+    describe(`When event is ${eventName}`, () =>
     {
-      expect(createPointerEvent("pointerover").type).toBe("pointerover");
-    });
+      it(`Has type ${eventName}.`, () =>
+      {
+        expect(createPointerEvent(eventName).type).toBe(eventName);
+      });
 
-    it("Triggers pointerover callback.", () =>
-    {
-      const target = document.createElement("div");
-      const callback = jest.fn();
+      it(`Invokes ${eventName} callback.`, () =>
+      {
+        const target = document.createElement("div");
+        const callback = jest.fn();
 
-      target.addEventListener("pointerover", callback);
-      fireEvent.pointerOver(target);
+        target.addEventListener(eventName, callback);
+        fireEvent(target, createEvent(eventName, target));
 
-      expect(callback).toBeCalledTimes(1);
-    });
-  });
-
-  describe("When pointerenter event is fired", () =>
-  {
-    it("Has type pointerenter.", () =>
-    {
-      expect(createPointerEvent("pointerenter").type).toBe("pointerenter");
-    });
-
-    it("Triggers pointerenter callback.", () =>
-    {
-      const target = document.createElement("div");
-      const callback = jest.fn();
-
-      target.addEventListener("pointerenter", callback);
-      fireEvent.pointerEnter(target);
-
-      expect(callback).toBeCalledTimes(1);
-    });
-  });
-
-  describe("When pointerdown event is fired", () =>
-  {
-    it("Has type pointerdown.", () =>
-    {
-      expect(createPointerEvent("pointerdown").type).toBe("pointerdown");
-    });
-
-    it("Triggers pointerdown callback.", () =>
-    {
-      const target = document.createElement("div");
-      const callback = jest.fn();
-
-      target.addEventListener("pointerdown", callback);
-      fireEvent.pointerDown(target);
-
-      expect(callback).toBeCalledTimes(1);
-    });
-  });
-
-  describe("When pointermove event is fired", () =>
-  {
-    it("Has type pointermove.", () =>
-    {
-      expect(createPointerEvent("pointermove").type).toBe("pointermove");
-    });
-
-    it("Triggers pointermove callback.", () =>
-    {
-      const target = document.createElement("div");
-      const callback = jest.fn();
-
-      target.addEventListener("pointermove", callback);
-      fireEvent.pointerMove(target);
-
-      expect(callback).toBeCalledTimes(1);
-    });
-  });
-
-  describe("When pointerup event is fired", () =>
-  {
-    it("Has type pointerup.", () =>
-    {
-      expect(createPointerEvent("pointerup").type).toBe("pointerup");
-    });
-
-    it("Triggers pointerup callback.", () =>
-    {
-      const target = document.createElement("div");
-      const callback = jest.fn();
-
-      target.addEventListener("pointerup", callback);
-      fireEvent.pointerUp(target);
-
-      expect(callback).toBeCalledTimes(1);
-    });
-  });
-
-  describe("When pointercancel event is fired", () =>
-  {
-    it("Has type pointercancel.", () =>
-    {
-      expect(createPointerEvent("pointercancel").type).toBe("pointercancel");
-    });
-
-    it("Triggers pointercancel callback.", () =>
-    {
-      const target = document.createElement("div");
-      const callback = jest.fn();
-
-      target.addEventListener("pointercancel", callback);
-      fireEvent.pointerCancel(target);
-
-      expect(callback).toBeCalledTimes(1);
-    });
-  });
-
-  describe("When pointerout event is fired", () =>
-  {
-    it("Has type pointerout.", () =>
-    {
-      expect(createPointerEvent("pointerout").type).toBe("pointerout");
-    });
-
-    it("Triggers pointerout callback.", () =>
-    {
-      const target = document.createElement("div");
-      const callback = jest.fn();
-
-      target.addEventListener("pointerout", callback);
-      fireEvent.pointerOut(target);
-
-      expect(callback).toBeCalledTimes(1);
-    });
-  });
-
-  describe("When pointerleave event is fired", () =>
-  {
-    it("Has type pointerleave.", () =>
-    {
-      expect(createPointerEvent("pointerleave").type).toBe("pointerleave");
-    });
-
-    it("Triggers pointerleave callback.", () =>
-    {
-      const target = document.createElement("div");
-      const callback = jest.fn();
-
-      target.addEventListener("pointerleave", callback);
-      fireEvent.pointerLeave(target);
-
-      expect(callback).toBeCalledTimes(1);
-    });
-  });
-
-  describe("When gotpointercapture event is fired", () =>
-  {
-    it("Has type gotpointercapture.", () =>
-    {
-      expect(createPointerEvent("gotpointercapture").type)
-        .toBe("gotpointercapture");
-    });
-
-    it("Triggers gotpointercapture callback.", () =>
-    {
-      const target = document.createElement("div");
-      const callback = jest.fn();
-
-      target.addEventListener("gotpointercapture", callback);
-      fireEvent.gotPointerCapture(target);
-
-      expect(callback).toBeCalledTimes(1);
-    });
-  });
-
-  describe("When lostpointercapture event is fired", () =>
-  {
-    it("Has type lostpointercapture.", () =>
-    {
-      expect(createPointerEvent("lostpointercapture").type)
-        .toBe("lostpointercapture");
-    });
-
-    it("Triggers lostpointercapture callback.", () =>
-    {
-      const target = document.createElement("div");
-      const callback = jest.fn();
-
-      target.addEventListener("lostpointercapture", callback);
-      fireEvent.lostPointerCapture(target);
-
-      expect(callback).toBeCalledTimes(1);
+        expect(callback).toBeCalledTimes(1);
+      });
     });
   });
 
