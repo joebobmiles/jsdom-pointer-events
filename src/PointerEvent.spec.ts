@@ -50,79 +50,54 @@ describe("PointerEvent", () =>
     });
   });
 
-  describe("When options.pointerId is given", () =>
+  describe.each([
+    [
+      "pointerId",
+      {
+        "given": 2,
+        "default": 0,
+      }
+    ],
+    [
+      "width",
+      {
+        "given": 10,
+        "default": 1,
+      }
+    ],
+    [
+      "height",
+      {
+        "given": 10,
+        "default": 1,
+      }
+    ]
+  ])("When given an options object", (key, values) =>
   {
-    it("Has given pointerId.", () =>
+    describe(`When options.${key} is set`, () =>
     {
-      const target = document.createElement("div");
-      const { pointerId, } = createEvent.pointerDown(target, {
-        "pointerId": 2,
-      }) as PointerEvent;
+      it(`Has given value.`, () =>
+      {
+        const options: any = {};
+        options[key] = values.given;
 
-      expect(pointerId).toBe(2);
+        const target = document.createElement("div");
+        const pointerEvent: any =
+          createEvent.pointerDown(target, options);
+
+        expect(pointerEvent[key]).toBe(values.given);
+      });
     });
-  });
 
-  describe("When options.pointerId is not given", () =>
-  {
-    it("Has default pointerId.", () =>
+    describe(`When options.${key} is not set`, () =>
     {
-      const target = document.createElement("div");
-      const { pointerId, } = createEvent.pointerDown(target) as PointerEvent;
+      it(`Has default value.`, () =>
+      {
+        const target = document.createElement("div");
+        const pointerEvent: any = createEvent.pointerDown(target, {});
 
-      expect(pointerId).toBe(0);
-    });
-  });
-
-  describe("When options.width is given", () =>
-  {
-    it("Has given width.", () =>
-    {
-      const { width, } = createEvent.pointerDown(
-        document.createElement("div"),
-        {
-          "width": 10,
-        }
-      ) as PointerEvent;
-
-      expect(width).toBe(10);
-    });
-  });
-
-  describe("When options.width is not given", () =>
-  {
-    it("Has default width.", () =>
-    {
-      const { width, } =
-        createEvent.pointerDown(document.createElement("div")) as PointerEvent;
-
-      expect(width).toBe(1);
-    });
-  });
-
-  describe("When options.height is given", () =>
-  {
-    it("Has given height.", () =>
-    {
-      const { height, } = createEvent.pointerDown(
-        document.createElement("div"),
-        {
-          "height": 10,
-        }
-      ) as PointerEvent;
-
-      expect(height).toBe(10);
-    });
-  });
-
-  describe("When options.height is absent", () =>
-  {
-    it("Has default height.", () =>
-    {
-      const { height, } =
-        createEvent.pointerDown(document.createElement("div")) as PointerEvent;
-
-      expect(height).toBe(1);
+        expect(pointerEvent[key]).toBe(values.default);
+      });
     });
   });
 });
