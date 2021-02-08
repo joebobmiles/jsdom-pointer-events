@@ -20,7 +20,7 @@ describe("PointerEvent", () =>
   describe.each([
     [ "pointerover" ],
     [ "pointerenter" ],
-    [ "pointerleave " ],
+    [ "pointerleave" ],
     [ "pointerdown" ],
     [ "pointerup" ],
     [ "pointermove" ],
@@ -70,6 +70,55 @@ describe("PointerEvent", () =>
       {
         "given": 10,
         "default": 1,
+      }
+    ],
+    [
+      "pressure",
+      {
+        "given": 1200,
+        "default": 0,
+      }
+    ],
+    [
+      "tangentialPressure",
+      {
+        "given": 100,
+        "default": 0,
+      }
+    ],
+    [
+      "tiltX",
+      {
+        "given": 5,
+        "default": 0,
+      }
+    ],
+    [
+      "tiltY",
+      {
+        "given": 5,
+        "default": 0,
+      }
+    ],
+    [
+      "twist",
+      {
+        "given": 12,
+        "default": 0,
+      }
+    ],
+    [
+      "pointerType",
+      {
+        "given": "touch",
+        "default": "",
+      }
+    ],
+    [
+      "isPrimary",
+      {
+        "given": true,
+        "default": false,
       }
     ]
   ])("When given an options object", (key, values) =>
