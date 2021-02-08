@@ -17,3 +17,15 @@ At the time of writing, the missing behaviors are:
 This polyfill is not intended to provide any utilities for performing testing
 of pointer events. Instead it is recommended to use [`@testing-library/dom`]()
 and its associated wrappers.
+
+## Notes
+
+### Pointer Type
+
+By default, the `pointerType` of any `PointerEvent` object will always the
+empty string (`""`). This is because we cannot assume the pointer type, and
+the standard requires that, for pointers whose type cannot be determined, the
+`pointerType` be the empty string.
+
+Therefore, if you want to check behavior by pointer type, you **must** assign
+the pointer type yourself.
