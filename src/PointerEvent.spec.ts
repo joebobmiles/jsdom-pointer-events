@@ -1,9 +1,7 @@
 import { createEvent, fireEvent, } from "@testing-library/dom";
 import "@testing-library/jest-dom/extend-expect";
 
-import PointerEvent from "./PointerEvent";
-
-if (!global.PointerEvent) global.PointerEvent = PointerEvent as any;
+import ".";
 
 describe("PointerEvent", () =>
 {
