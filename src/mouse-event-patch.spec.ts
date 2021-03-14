@@ -5,7 +5,12 @@ import ".";
 
 describe.each([
   [ "down" ],
-  [ "up" ]
+  [ "up" ],
+  [ "enter" ],
+  [ "leave" ],
+  [ "move" ],
+  [ "over" ],
+  [ "out" ]
 ])(
   "When a MouseEvent is triggered on a PointerEvent target.",
   (verb) =>
