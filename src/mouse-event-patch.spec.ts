@@ -3,27 +3,22 @@ import "@testing-library/jest-dom/extend-expect";
 
 import ".";
 
-describe("PointerEvent is sent when", () =>
-{
-  it("Receives a mousedown event.", () =>
+describe.each([
+  [ "mousedown", "pointerdown" ],
+  [ "mouseup", "pointerup" ]
+])(
+  "When a MouseEvent is triggered on a PointerEvent target.",
+  (triggeringType, listenerType) =>
   {
-    const target = document.createElement("div");
-    const callback = jest.fn();
+    it(`Receives ${listenerType} when ${triggeringType} is sent.`, () =>
+    {
+      const target = document.createElement("div");
+      const callback = jest.fn();
 
-    target.addEventListener("pointerdown", callback);
-    fireEvent(target, createEvent("mousedown", target));
+      target.addEventListener(listenerType, callback);
+      fireEvent(target, createEvent(triggeringType, target));
 
-    expect(callback).toBeCalledTimes(1);
-  });
-
-  it("Receives a mouseup event.", () =>
-  {
-    const target = document.createElement("div");
-    const callback = jest.fn();
-
-    target.addEventListener("pointerup", callback);
-    fireEvent(target, createEvent("mouseup", target));
-
-    expect(callback).toBeCalledTimes(1);
-  });
-});
+      expect(callback).toBeCalledTimes(1);
+    });
+  }
+);
