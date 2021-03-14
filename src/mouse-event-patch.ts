@@ -20,7 +20,9 @@ global.EventTarget.prototype.addEventListener =
         [
           mouseType,
           () =>
-            this.dispatchEvent(new PointerEvent(type, {})),
+            this.dispatchEvent(new PointerEvent(type, {
+              "pointerId": 1,
+            })),
           options
         ]
       );
