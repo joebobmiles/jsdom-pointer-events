@@ -4,12 +4,15 @@ import "@testing-library/jest-dom/extend-expect";
 import ".";
 
 describe.each([
-  [ "mousedown", "pointerdown" ],
-  [ "mouseup", "pointerup" ]
+  [ "down" ],
+  [ "up" ]
 ])(
   "When a MouseEvent is triggered on a PointerEvent target.",
-  (triggeringType, listenerType) =>
+  (verb) =>
   {
+    const triggeringType = `mouse${verb}`;
+    const listenerType = `pointer${verb}`;
+
     it(`Receives ${listenerType} when ${triggeringType} is sent.`, () =>
     {
       const target = document.createElement("div");
