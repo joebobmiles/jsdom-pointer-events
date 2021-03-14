@@ -63,5 +63,19 @@ describe(
 
       expect(firstCall?.shift()?.pointerType).toBe("mouse");
     });
+
+    it("Is primary pointer.", () =>
+    {
+      const target = document.createElement("div");
+      const callback = jest.fn((event: PointerEvent) =>
+        event);
+
+      target.addEventListener("pointermove", callback);
+      fireEvent(target, createEvent("mousemove", target));
+
+      const { "mock": { "calls": [ firstCall ], }, } = callback;
+
+      expect(firstCall?.shift()?.isPrimary).toBe(true);
+    });
   }
 );
