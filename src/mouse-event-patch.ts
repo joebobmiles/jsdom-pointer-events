@@ -11,7 +11,7 @@ global.EventTarget.prototype.addEventListener =
   {
     _addEventListener.apply(this, [ type, listener, options ]);
 
-    if (type.match(/^pointer.*/) !== null)
+    if (type.match(/^pointer/) !== null)
     {
       const mouseType = type.replace(/^pointer/, "mouse");
 
