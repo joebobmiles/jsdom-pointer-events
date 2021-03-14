@@ -15,4 +15,15 @@ describe("PointerEvent is sent when", () =>
 
     expect(callback).toBeCalledTimes(1);
   });
+
+  it("Receives a mouseup event.", () =>
+  {
+    const target = document.createElement("div");
+    const callback = jest.fn();
+
+    target.addEventListener("pointerup", callback);
+    fireEvent(target, createEvent("mouseup", target));
+
+    expect(callback).toBeCalledTimes(1);
+  });
 });
