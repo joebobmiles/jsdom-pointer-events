@@ -7,7 +7,7 @@ const {
 } = global.EventTarget;
 
 global.EventTarget.prototype.addEventListener =
-  function (type: string, listener: (_: Event) => void, options)
+  function (type, listener, options)
   {
     _addEventListener.apply(this, [ type, listener, options ]);
 
@@ -19,11 +19,13 @@ global.EventTarget.prototype.addEventListener =
         this,
         [
           mouseType,
-          () =>
+          (event) =>
             this.dispatchEvent(new PointerEvent(type, {
               "pointerId": 1,
               "pointerType": "mouse",
               "isPrimary": true,
+              "clientX": event.clientX,
+              "clientY": event.clientY,
             })),
           options
         ]
