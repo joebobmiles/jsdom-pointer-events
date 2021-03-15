@@ -77,5 +77,24 @@ describe(
 
       expect(firstCall?.shift()?.isPrimary).toBe(true);
     });
+
+    it("Has same position as mouse event.", () =>
+    {
+      const target = document.createElement("div");
+      const callback = jest.fn((event: PointerEvent) =>
+        event);
+
+      target.addEventListener("pointermove", callback);
+      fireEvent(target, createEvent("mousemove", target, {
+        "clientX": 10,
+        "clientY": 11,
+      }));
+
+      const { "mock": { "calls": [ firstCall ], }, } = callback;
+      const firstCallParameter = firstCall?.shift();
+
+      expect(firstCallParameter?.clientX).toBe(10);
+      expect(firstCallParameter?.clientY).toBe(11);
+    });
   }
 );
