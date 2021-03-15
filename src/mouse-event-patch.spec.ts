@@ -2,7 +2,6 @@ import { createEvent, fireEvent, } from "@testing-library/dom";
 import "@testing-library/jest-dom/extend-expect";
 
 import ".";
-import PointerEvent from "./PointerEvent";
 
 describe.each([
   [ "down" ],
