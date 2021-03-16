@@ -70,9 +70,6 @@
       "plugin:jest-dom/recommended",
       "plugin:testing-library/recommended"
     ],
-    "rules": {
-      "multiline-comment-style": "warn"
-    },
     "ignorePatterns": [
       "dist/**",
       "node_modules/**"
