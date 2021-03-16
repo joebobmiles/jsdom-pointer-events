@@ -24,8 +24,8 @@ global.EventTarget.prototype.addEventListener =
               "pointerId": 1,
               "pointerType": "mouse",
               "isPrimary": true,
-              "clientX": event.clientX,
-              "clientY": event.clientY,
+              "clientX": (event as MouseEvent).clientX,
+              "clientY": (event as MouseEvent).clientY,
             })),
           options
         ]
