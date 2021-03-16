@@ -84,10 +84,10 @@ describe(
         event);
 
       target.addEventListener("pointermove", callback);
-      fireEvent(target, createEvent("mousemove", target, {
+      fireEvent.mouseMove(target, {
         "clientX": 10,
         "clientY": 11,
-      }));
+      });
 
       const { "mock": { "calls": [ firstCall ], }, } = callback;
       const firstCallParameter = firstCall?.shift();
