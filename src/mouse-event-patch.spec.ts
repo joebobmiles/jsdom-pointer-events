@@ -115,6 +115,24 @@ describe.each([
     true,
     (e?: PointerEvent) =>
       e?.ctrlKey
+  ],
+  [
+    "shiftKey",
+    true,
+    (e?: PointerEvent) =>
+      e?.shiftKey
+  ],
+  [
+    "altKey",
+    true,
+    (e?: PointerEvent) =>
+      e?.altKey
+  ],
+  [
+    "metaKey",
+    true,
+    (e?: PointerEvent) =>
+      e?.metaKey
   ]
 ])(
   "MouseEvents passed to PointerEvents listeners carry event values.",

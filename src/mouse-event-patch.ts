@@ -29,6 +29,9 @@ global.EventTarget.prototype.addEventListener =
               "screenX": (event as MouseEvent).screenX,
               "screenY": (event as MouseEvent).screenY,
               "ctrlKey": (event as MouseEvent).ctrlKey,
+              "shiftKey": (event as MouseEvent).shiftKey,
+              "altKey": (event as MouseEvent).altKey,
+              "metaKey": (event as MouseEvent).metaKey,
             })),
           options
         ]
