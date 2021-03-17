@@ -29,3 +29,10 @@ the standard requires that, for pointers whose type cannot be determined, the
 
 Therefore, if you want to check behavior by pointer type, you **must** assign
 the pointer type yourself.
+
+> There are two exceptions to this: `PointerEvents` triggered by 1)
+> `MouseEvents` and 2) `TouchEvents`. This polyfill implements
+> `PointerEvents` being fired whenever `MouseEvents` or `TouchEvents` are
+> fired. When a `MouseEvent` or `TouchEvent` is fired, we already know the
+> source ("mouse" or "touch", respectively), so we > can provide the proper
+> `pointerType`.
