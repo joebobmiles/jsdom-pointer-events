@@ -31,53 +31,30 @@ describe.each([
   }
 );
 
-describe(
-  "When PointerEvents are spawned by MouseEvents, they receive the same options.",
-  () =>
+describe.each([
+  [
+    "pointerId",
+    1,
+    (e?: PointerEvent) =>
+      e?.pointerId
+  ],
+  [
+    "pointerType",
+    "mouse",
+    (e?: PointerEvent) =>
+      e?.pointerType
+  ],
+  [
+    "isPrimary",
+    true,
+    (e?: PointerEvent) =>
+      e?.isPrimary
+  ]
+])(
+  "MouseEvents passed to PointerEvent listener have default member values.",
+  (member, value, getMember) =>
   {
-    it("Has pointerId of 1.", () =>
-    {
-      const target = document.createElement("div");
-      const callback = jest.fn((event: PointerEvent) =>
-        event);
-
-      target.addEventListener("pointermove", callback);
-      fireEvent(target, createEvent("mousemove", target));
-
-      const { "mock": { "calls": [ firstCall ], }, } = callback;
-
-      expect(firstCall?.shift()?.pointerId).toBe(1);
-    });
-
-    it("Has pointerType of mouse.", () =>
-    {
-      const target = document.createElement("div");
-      const callback = jest.fn((event: PointerEvent) =>
-        event);
-
-      target.addEventListener("pointermove", callback);
-      fireEvent(target, createEvent("mousemove", target));
-
-      const { "mock": { "calls": [ firstCall ], }, } = callback;
-
-      expect(firstCall?.shift()?.pointerType).toBe("mouse");
-    });
-
-    it("Is primary pointer.", () =>
-    {
-      const target = document.createElement("div");
-      const callback = jest.fn((event: PointerEvent) =>
-        event);
-
-      target.addEventListener("pointermove", callback);
-      fireEvent(target, createEvent("mousemove", target));
-
-      const { "mock": { "calls": [ firstCall ], }, } = callback;
-
-      expect(firstCall?.shift()?.isPrimary).toBe(true);
-    });
-
-    it("Has same client position as mouse event.", () =>
+    it(`Has ${member} with value of ${value}.`, () =>
     {
       const target = document.createElement("div");
       const callback = jest.fn((event: PointerEvent) =>
@@ -98,19 +75,52 @@ describe(
        *
        *  fireEvent(element, createEvent(eventType, element, eventOptions));
        */
-      fireEvent.mouseMove(target, {
-        "clientX": 10,
-        "clientY": 11,
-      });
+      fireEvent.mouseMove(target);
 
       const { "mock": { "calls": [ firstCall ], }, } = callback;
       const firstCallParameter = firstCall?.shift();
 
-      expect(firstCallParameter?.clientX).toBe(10);
-      expect(firstCallParameter?.clientY).toBe(11);
+      expect(getMember(firstCallParameter)).toBe(value);
     });
+  }
+);
 
-    it("Has same screen position as mouse event.", () =>
+describe.each([
+  [
+    "clientX",
+    10,
+    (e?: PointerEvent) =>
+      e?.clientX
+  ],
+  [
+    "clientY",
+    11,
+    (e?: PointerEvent) =>
+      e?.clientY
+  ],
+  [
+    "screenX",
+    10,
+    (e?: PointerEvent) =>
+      e?.screenX
+  ],
+  [
+    "screenY",
+    11,
+    (e?: PointerEvent) =>
+      e?.screenY
+  ],
+  [
+    "ctrlKey",
+    true,
+    (e?: PointerEvent) =>
+      e?.ctrlKey
+  ]
+])(
+  "MouseEvents passed to PointerEvents listeners carry event values.",
+  (member, value, getMember) =>
+  {
+    it(`Has ${member} with value of ${value}`, () =>
     {
       const target = document.createElement("div");
       const callback = jest.fn((event: PointerEvent) =>
@@ -118,32 +128,13 @@ describe(
 
       target.addEventListener("pointermove", callback);
       fireEvent.mouseMove(target, {
-        "screenX": 10,
-        "screenY": 11,
+        [member]: value,
       });
 
       const { "mock": { "calls": [ firstCall ], }, } = callback;
       const firstCallParameter = firstCall?.shift();
 
-      expect(firstCallParameter?.screenX).toBe(10);
-      expect(firstCallParameter?.screenY).toBe(11);
-    });
-
-    it("Carries over ctrlKey value.", () =>
-    {
-      const target = document.createElement("div");
-      const callback = jest.fn((event: PointerEvent) =>
-        event);
-
-      target.addEventListener("pointermove", callback);
-      fireEvent.mouseMove(target, {
-        "ctrlKey": true,
-      });
-
-      const { "mock": { "calls": [ firstCall ], }, } = callback;
-      const firstCallParameter = firstCall?.shift();
-
-      expect(firstCallParameter?.ctrlKey).toBe(true);
+      expect(getMember(firstCallParameter)).toBe(value);
     });
   }
 );
