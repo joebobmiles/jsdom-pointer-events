@@ -127,20 +127,6 @@ describe.each([
         event);
 
       target.addEventListener("pointermove", callback);
-      /*
-       * NOTE: I would normally use createEvent with the event type here. However,
-       * that creates only generic events, which carries none of the needed
-       * information used by the event listener we use to translate mouse events
-       * into pointer events.
-       *
-       * This also means that end users cannot utilize createEvent with event type
-       * string. That frustrates me, but it is very likely that best practice is
-       * to use fireEvent[eventType] instead.
-       *
-       * Example of invalid usage:
-       *
-       *  fireEvent(element, createEvent(eventType, element, eventOptions));
-       */
       fireEvent.mouseMove(target, {
         [member]: value,
       });
