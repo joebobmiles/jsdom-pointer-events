@@ -34,5 +34,5 @@ the pointer type yourself.
 > `MouseEvents` and 2) `TouchEvents`. This polyfill implements
 > `PointerEvents` being fired whenever `MouseEvents` or `TouchEvents` are
 > fired. When a `MouseEvent` or `TouchEvent` is fired, we already know the
-> source ("mouse" or "touch", respectively), so we > can provide the proper
+> source ("mouse" or "touch", respectively), so we can provide the proper
 > `pointerType`.
