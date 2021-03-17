@@ -77,7 +77,7 @@ describe(
       expect(firstCall?.shift()?.isPrimary).toBe(true);
     });
 
-    it("Has same position as mouse event.", () =>
+    it("Has same client position as mouse event.", () =>
     {
       const target = document.createElement("div");
       const callback = jest.fn((event: PointerEvent) =>
@@ -108,6 +108,25 @@ describe(
 
       expect(firstCallParameter?.clientX).toBe(10);
       expect(firstCallParameter?.clientY).toBe(11);
+    });
+
+    it("Has same screen position as mouse event.", () =>
+    {
+      const target = document.createElement("div");
+      const callback = jest.fn((event: PointerEvent) =>
+        event);
+
+      target.addEventListener("pointermove", callback);
+      fireEvent.mouseMove(target, {
+        "screenX": 10,
+        "screenY": 11,
+      });
+
+      const { "mock": { "calls": [ firstCall ], }, } = callback;
+      const firstCallParameter = firstCall?.shift();
+
+      expect(firstCallParameter?.screenX).toBe(10);
+      expect(firstCallParameter?.screenY).toBe(11);
     });
   }
 );

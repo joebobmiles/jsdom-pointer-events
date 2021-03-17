@@ -26,6 +26,8 @@ global.EventTarget.prototype.addEventListener =
               "isPrimary": true,
               "clientX": (event as MouseEvent).clientX,
               "clientY": (event as MouseEvent).clientY,
+              "screenX": (event as MouseEvent).screenX,
+              "screenY": (event as MouseEvent).screenY,
             })),
           options
         ]
