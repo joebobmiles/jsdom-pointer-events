@@ -54,7 +54,7 @@ describe.each([
   "MouseEvents passed to PointerEvent listener have default member values.",
   (member, value, getMember) =>
   {
-    it(`Has ${member} with value of ${value}.`, () =>
+    it(`Has ${member} with default value of ${value}.`, () =>
     {
       const target = document.createElement("div");
       const callback = jest.fn((event: PointerEvent) =>
