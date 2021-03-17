@@ -28,6 +28,7 @@ global.EventTarget.prototype.addEventListener =
               "clientY": (event as MouseEvent).clientY,
               "screenX": (event as MouseEvent).screenX,
               "screenY": (event as MouseEvent).screenY,
+              "ctrlKey": (event as MouseEvent).ctrlKey,
             })),
           options
         ]

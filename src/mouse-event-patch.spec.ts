@@ -128,5 +128,22 @@ describe(
       expect(firstCallParameter?.screenX).toBe(10);
       expect(firstCallParameter?.screenY).toBe(11);
     });
+
+    it("Carries over ctrlKey value.", () =>
+    {
+      const target = document.createElement("div");
+      const callback = jest.fn((event: PointerEvent) =>
+        event);
+
+      target.addEventListener("pointermove", callback);
+      fireEvent.mouseMove(target, {
+        "ctrlKey": true,
+      });
+
+      const { "mock": { "calls": [ firstCall ], }, } = callback;
+      const firstCallParameter = firstCall?.shift();
+
+      expect(firstCallParameter?.ctrlKey).toBe(true);
+    });
   }
 );
